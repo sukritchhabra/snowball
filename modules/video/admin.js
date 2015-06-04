@@ -11,7 +11,11 @@
   $(".snowball-main").on("change keyup", ".snowball-block-video .video-url", function() {
     var block = $(this).parents(".snowball-block-video");
     var videoUrl = $(this).val();
+    console.log("url after keyup: " + videoUrl);
     var videoID = parseVideoURL(videoUrl);
+
+    block.find(".video-id").val(videoID);
+    block.find(".video-id").trigger("change");
   });
 
   $(".snowball-main").on("click", ".snowball-block-video .frame-size", function() {
@@ -29,6 +33,7 @@
   function parseVideoURL(videoUrl) {
     var re = /youtube.com.*v=(.*)/;
     var matches = re.exec(videoUrl);
+    console.log("Sending: " + matches[1]);
     
     return matches[1];
   }
