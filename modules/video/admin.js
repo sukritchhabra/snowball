@@ -4,7 +4,9 @@
     var videoUrl = $(this).find(".video-url").val();
     console.log("videoUrl: " + videoUrl);
     var videoID = parseVideoURL(videoUrl);
-    $(this).find("video-id").val(videoID);
+
+    $(this).find(".video-id").val(videoID);
+    $(this).find(".video-id").trigger("change");
   });
 
   $(".snowball-main").on("change keyup", ".snowball-block-video .video-url", function() {
