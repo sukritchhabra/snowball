@@ -2,7 +2,6 @@
 
   $(".snowball-main").on("open", ".snowball-block-video", function() {
     var videoUrl = $(this).find(".video-url").val();
-    console.log("videoUrl: " + videoUrl);
     var videoID = parseVideoURL(videoUrl);
 
     $(this).find(".video-id").val(videoID);
@@ -20,10 +19,7 @@
     var selectedSize = $(this).val();
     var width = selectedSize.split("x")[0];
     var height = selectedSize.split("x")[1];
-
-    console.log("width: "+ width);
-    console.log("height: "+ height);
-
+    
     block.find(".frame-width").val(width);
     block.find(".frame-height").val(height);
 
@@ -33,8 +29,7 @@
   function parseVideoURL(videoUrl) {
     var re = /youtube.com.*v=(.*)/;
     var matches = re.exec(videoUrl);
-    console.log("matches: " + matches);
-    console.log("sending: " + matches[1]);
-    return matches[1];  //returning videoID
+    
+    return matches[1];
   }
 })(jQuery);
