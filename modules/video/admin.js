@@ -18,7 +18,7 @@
     block.find(".video-id").trigger("change");
   });
 
-  $(".snowball-main").on("click", ".snowball-block-video .frame-size", function() {
+  /*$(".snowball-main").on("click", ".snowball-block-video .frame-size", function() {
     var block = $(this).parents(".snowball-block-video");
     var selectedSize = $(this).val();
     var width = selectedSize.split("x")[0];
@@ -28,7 +28,7 @@
     block.find(".frame-height").val(height);
 
     block.find(".video-url").trigger("keyup");
-  });
+  });*/
 
   function parseVideoURL(videoUrl) {
     var re = /youtube.com.*v=(.*)/;
