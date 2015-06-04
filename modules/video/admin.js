@@ -1,33 +1,38 @@
 (function($) {
 
-  /*$(".snowball-main").on("open", ".snowball-block-video", function() {
-    var zoom = $(this).find(".zoom").val();
-    $(this).find(".zoom-output").text(zoom);
+  $(".snowball-main").on("open", ".snowball-block-video", function() {
+    var videoUrl = $(this).find(".video-url").val();
+    console.log("videoUrl: " + videoUrl);
+    var videoID = parseVideoURL(videoUrl);
+    $(this).find("video-id").val(videoID);
   });
 
   $(".snowball-main").on("change keyup", ".snowball-block-video .video-url", function() {
     var block = $(this).parents(".snowball-block-video");
-    var url = $(this).val();
-    var props = parseURL(url);
-
-    block.find("[data-target='video-url']").val(props.videoURL);
-    block.find("[data-target='frameSize'][value='" + props.frameSize +  "']").prop("checked", true);
-
-    block.trigger("render");
+    var videoUrl = $(this).val();
+    var videoID = parseVideoURL(videoUrl);
   });
 
-  $(".snowball-main").on("input change", ".snowball-block-video .zoom", function() {
+  $(".snowball-main").on("click", ".snowball-block-video .frame-size", function() {
     var block = $(this).parents(".snowball-block-video");
-    var zoom = $(this).val();
+    var selectedSize = $(this).val();
+    var width = selectedSize.split("x")[0];
+    var height = selectedSize.split("x")[1];
 
-    block.find(".zoom-output").text(zoom);
+    console.log("width: "+ width);
+    console.log("height: "+ height);
+
+    block.find(".frame-width").val(width);
+    block.find(".frame-height").val(height);
+
+    block.find(".video-url").trigger("keyup");
   });
 
-  function parseURL(url) {
-    var re = /google.com\/maps\/.*@(-?\d+.\d+),(-?\d+.\d+),(\d+)([mz])/;
-    var matches = re.exec(url);
-
-  }*/
-
- 
+  function parseVideoURL(videoUrl) {
+    var re = /youtube.com.*v=(.*)/;
+    var matches = re.exec(videoUrl);
+    console.log("matches: " + matches);
+    console.log("sending: " + matches[1]);
+    return matches[1];  //returning videoID
+  }
 })(jQuery);
