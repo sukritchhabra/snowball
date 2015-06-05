@@ -18,15 +18,15 @@
     block.find(".video-id").trigger("change");
   });
 
-  $(".snowball-main").on("click", ".snowball-block-video .full-width2", function() {
+  $(".snowball-main").on("click", ".snowball-block-video .full-width-checkbox", function() {
     console.log("registered click!!!!!!!!");
     var block = $(this).parents(".snowball-block-video");
     
     console.log("full-width value: " + $(this).val());
     console.log("is checked: " + $(this).prop("checked"));
-    var checkStatus = $(this).prop("checked");
+    var checkedStatus = $(this).prop("checked");
 
-    if (checkStatus == false) {
+    if (checkedStatus == false) {
       block.find(".custom-style").val("");
     } else {
       block.find(".custom-style").val("width:100%; height:55.6vw;");
