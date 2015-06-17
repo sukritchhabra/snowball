@@ -1,13 +1,21 @@
 <form data-name="Chart">
   <div class="chart"></div>
-  <style scoped>
+  <input class="JSON" data-target="JSON" type="hidden" value='[
+    ["Year","Lowest Temp.","Highest Temp","Mean Temp.","Total Snowfall (in.)"],
+    ["2015","9","58","31","4.3"],
+    ["2014","4","61","28.4","25.9"],
+    ["2013","12","68","36.4","3.9"],
+    ["2012","14","63","37.9","2.5"],
+    ["2011","8","54","29.5","25.2"]
+  ]'>
+  <input class="HTML" data-target="HTML" type="hidden">
 
+  <style scoped>
   .snowball-block form .chart {
     width: 100%;
     height: 200px;
     overflow: auto;
     margin-bottom: 0;
   }
-
   </style>
 </form>
