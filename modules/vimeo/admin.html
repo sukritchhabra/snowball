@@ -1,10 +1,22 @@
 <form>
   <p>URL<br>
-    <input type="text" class="video-url large-text" data-target="video-url" value="https://vimeo.com/133050254">
+    <input type="text" class="video-url large-text" data-target="video-url" value="https://vimeo.com/124847087">
     <input type="hidden" class="video-id" data-target="video-id">
   </p>
 
   <p>
+    <label><input type="checkbox" data-target="title" value="&title=0">Hide Title Bar</label>
+    <label><input type="checkbox" data-target="portrait" value="&portrait=0">Hide Portrait</label>
+    <label><input type="checkbox" data-target="player_id" value="&player_id=0">Hide Player ID</label>
+    <label><input type="checkbox" data-target="badge" value="&badge=0">Hide Badge</label>
+  </p>
+
+  <p>Control Color<br>
+    <input type="text" class="wp-color-picker" data-target="control-color-input" value="#00adef" data-default-color="#00adef" />
+    <input type="hidden" class="control-color-output" data-target="control-color-output" value="&color=00adef">
+  </p>
+
+  <p>
     <label><input type="checkbox" data-target="full-width" value=" full-width">Full-Width</label>
-  </p> 
+  </p>
 </form>

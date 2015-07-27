@@ -5,7 +5,6 @@
 
     $(this).find(".video-id").val(videoID);
     $(this).trigger("render");
-    console.log('entered open');
   });
 
   $("#snowball-main").on("change keyup", ".snowball-block-vimeo .video-url", function() {
@@ -15,6 +14,13 @@
 
     block.find(".video-id").val(videoID);
     block.trigger("render");
+  });
+
+  $("#snowball-main").on("change keyup", ".snowball-block-vimeo [data-target='control-color-input']", function() {
+    var block = $(this).closest(".snowball-block-vimeo");
+    var inputColor = $(this).val();
+    var outputColor = "&color=" + inputColor.substring(1);
+    $("[data-target='control-color-output']").val(outputColor);
   });
 
   function parseVideoURL(videoUrl) {
