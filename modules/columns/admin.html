@@ -2,12 +2,12 @@
   <span class="fa fa-plus add-button"></span>
   
   <div class="toggle-buttons">
-    <div class="toggle-button toggle-column-1">Column 1</div>
+    <div class="toggle-button toggle-column-1 active">Column 1</div>
   </div>
 
   <div class="editors" style="height: 100%;">
     <textarea class="column-textarea active" data-target="col-1" style="height: 100%;">
-      <div class="column column-1"></div>
+<div class="column column-1"></div>
     </textarea>
   </div>
 
@@ -35,7 +35,6 @@
 .snowball-block-columns .snowball-html {
   visibility: hidden;
 }
-
 .snowball-block-columns.modal form {
   height: calc(100% - 31px);
 }
@@ -75,6 +74,21 @@
 .active {
   background-color: #236EA4;
 }
+
+.fa-times {
+  position: relative;
+  right: -0.3em;
+  bottom: 0.6em;
+  opacity: 0.2;
+  font-size: 1em;
+}
+
+.fa-times:hover {
+  opacity: 1;
+  color: #FF6600;
+  transform: scale(1.2);
+}
+
 
 </style>
 </form>
