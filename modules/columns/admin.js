@@ -16,6 +16,10 @@
 
       editor.setSize("100%", "100%");
 
+      /*Trying to mark the <div> and </div> as readOnly*/
+      //editor.markText(from: {line:0,ch:1}, to: {line:0,ch:28}, collapsed: true);
+      //editor.markText(from: {line:1,ch:1}, to: {line:1,ch:6}, collapsed: true);
+
       editor.on("change", function() {
         editor.save();
         textarea.trigger("change");
@@ -41,6 +45,9 @@
         block.find(".CodeMirror").eq((selectedIndex - 1)).show();
         button.remove();
         activateSelectedButton(block, (selectedIndex-1));
+
+        //Done so that ratio between columns is maintained in the preview
+        block.find(".snowball-preview").contents().find('body .row column').eq(selectedIndex).remove();
       }
     });
 
@@ -85,6 +92,10 @@
       });
 
       editor.setSize("100%", "100%");
+
+      /*Trying to mark the <div> and </div> as readOnly*/
+      //editor.markText(from: {line:0,ch:1}, to: {line:0,ch:28}, collapsed: true);
+      //editor.markText(from: {line:1,ch:1}, to: {line:1,ch:6}, collapsed: true);
 
       editor.on("change", function() {
         editor.save();
