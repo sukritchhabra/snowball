@@ -32,6 +32,7 @@
       if(currentCount <= 3) {
         addNewTextArea(block, (currentCount + 1));
       }
+      block.trigger('render');
     });
 
     $("#snowball-main").on("click", ".snowball-block-columns .fa-times", function(event) {
