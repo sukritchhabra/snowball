@@ -47,7 +47,7 @@
         activateSelectedButton(block, (selectedIndex-1));
 
         //Done so that ratio between columns is maintained in the preview
-        block.find(".snowball-preview").contents().find('body .row column').eq(selectedIndex).remove();
+        block.find(".snowball-preview").contents().find('body .row .column').eq(selectedIndex).remove();
       }
     });
 
