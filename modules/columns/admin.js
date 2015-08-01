@@ -32,7 +32,7 @@
       if(currentCount <= 3) {
         addNewTextArea(block, (currentCount + 1));
       }
-      block.trigger('render');
+      block.trigger("render");
     });
 
     $("#snowball-main").on("click", ".snowball-block-columns .fa-times", function(event) {
@@ -48,7 +48,7 @@
         activateSelectedButton(block, (selectedIndex-1));
 
         //Done so that ratio between columns is maintained in the preview
-        block.find(".snowball-preview").contents().find('body .row .column').eq(selectedIndex).remove();
+        block.find(".snowball-preview").contents().find("body .row .column").eq(selectedIndex).remove();
       }
     });
 
