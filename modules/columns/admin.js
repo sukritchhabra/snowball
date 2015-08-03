@@ -2,6 +2,7 @@
 
     $("#snowball-main").on("open", ".snowball-block-columns", function() {
 
+      console.log('hello world');
       var block = $(this);
       var textarea = block.find(".editors textarea");
 
@@ -17,8 +18,8 @@
       editor.setSize("100%", "100%");
 
       /*Trying to mark the <div> and </div> as readOnly*/
-      //editor.markText(from: {line:0,ch:1}, to: {line:0,ch:28}, collapsed: true);
-      //editor.markText(from: {line:1,ch:1}, to: {line:1,ch:6}, collapsed: true);
+      editor.markText({line:0,ch:0}, {line:0,ch:30}, {readOnly: true, atomic: true});
+      editor.markText({line:1,ch:0}, {line:1,ch:7}, {readOnly: true, atomic: true});
 
       editor.on("change", function() {
         editor.save();
@@ -73,7 +74,7 @@
       var buttonHTML = "";
 
       newHTML = newHTML + '<textarea class="column-textarea" data-target="col-' + columnNumber + '" style="height: 100%;">';
-      newHTML = newHTML + '<div class="column column-' + columnNumber + '"></div>';
+      newHTML = newHTML + '<div class="column column-' + columnNumber + '">\n</div>';
       newHTML = newHTML + '</textarea>';
 
       buttonHTML = buttonHTML + '<div class="toggle-button toggle-column-' + columnNumber + '">Column ' + columnNumber + '<span class="fa fa-times"></span></div>';
@@ -95,8 +96,8 @@
       editor.setSize("100%", "100%");
 
       /*Trying to mark the <div> and </div> as readOnly*/
-      //editor.markText(from: {line:0,ch:1}, to: {line:0,ch:28}, collapsed: true);
-      //editor.markText(from: {line:1,ch:1}, to: {line:1,ch:6}, collapsed: true);
+      editor.markText({line:0,ch:0}, {line:0,ch:30}, {readOnly: true, atomic: true});
+      editor.markText({line:1,ch:0}, {line:1,ch:7}, {readOnly: true, atomic: true});
 
       editor.on("change", function() {
         editor.save();
