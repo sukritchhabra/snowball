@@ -1,11 +1,28 @@
-(function($) {
+(function ($) {
 
     $("#snowball-main").on("open", ".snowball-block-columns", function() {
 
-      console.log('hello world');
+      console.log("hello world");
       var block = $(this);
-      var textarea = block.find(".editors textarea");
+      var textarea;
+      block.find('[type="checkbox"]').each(function(index, el) {
+        console.log('checking: ' + index);
 
+        if($(this).prop('checked')) {
+          console.log("was checked");
+          textarea = block.find('.column-textarea').eq(index);
+          initializeEditorAt(textarea);
+          block.find('.toggle-button').eq(index).addClass('activeButton');
+        }
+      });
+
+      $('.CodeMirror').hide();
+      $('.CodeMirror').eq(0).show();
+      $('.toggle-button').eq(0).addClass('active');
+    });
+
+    function initializeEditorAt(textarea) {
+      console.log(textarea);
       var editor = CodeMirror.fromTextArea(textarea[0], {
         mode: "htmlmixed",
         lineNumbers: true,
@@ -17,7 +34,7 @@
 
       editor.setSize("100%", "100%");
 
-      /*Trying to mark the <div> and </div> as readOnly*/
+      // Trying to mark the <div> and </div> as readOnly
       editor.markText({line:0,ch:0}, {line:0,ch:30}, {readOnly: true, atomic: true});
       editor.markText({line:1,ch:0}, {line:1,ch:7}, {readOnly: true, atomic: true});
 
@@ -25,19 +42,64 @@
         editor.save();
         textarea.trigger("change");
       });
+
+      textarea.data('codeMirrrorInstance', editor);
+      console.log(textarea.data('codeMirrrorInstance'));
+    }
+
+
+    $("#snowball-main").on("click", ".snowball-block-columns .toggle-button", function(event) {
+      var block = $(this).closest(".snowball-block-columns");
+      var selectedIndex = block.find(".toggle-buttons .toggle-button").index($(this));
+
+      activateSelectedButton(block, selectedIndex);
     });
 
     $("#snowball-main").on("click", ".snowball-block-columns .add-button", function(event) {
+      console.log('clicked plus button');
+
       var block= $(this).closest(".snowball-block-columns");
-      var currentCount = block.find(".editors .column-textarea").length;
-      if(currentCount <= 3) {
-        addNewTextArea(block, (currentCount + 1));
-      }
-      block.trigger("render");
+      console.log("entering each");
+      block.find('[type="checkbox"]').each(function(index, el) {
+        if(!($(this).prop('checked'))) {
+          console.log("found unchecked at: " + index);
+          addNewColumn(block, index);
+          return false;
+        }
+      });
     });
 
+    function addNewColumn(block, selection) {
+      block.find(".toggle-button").eq(selection).addClass("activeButton");
+      block.find(".toggle-buttons .toggle-button").each(function(index, el) {
+        if(index === selection) {
+          $(this).addClass("active");
+        } else {
+          $(this).removeClass("active");
+        }
+      });
+
+      //var dataTarget = "col-" + selection;
+      //textarea.data("target", dataTarget);
+      var textarea = block.find(".column-textarea").eq(selection);
+      initializeEditorAt(textarea);
+
+      block.find(".CodeMirror").each(function(index, el) {
+        if(index === selection) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+
+      var checkbox = block.find('[type="checkbox"]').eq(selection);
+      console.log(checkbox);
+      checkbox.prop("checked", true);
+    }
+
+
     $("#snowball-main").on("click", ".snowball-block-columns .fa-times", function(event) {
-      if(confirm("Are you yure you want to delete this column?")) {
+      if(confirm("Are you sure you want to delete this column?")) {
         var block = $(this).closest(".snowball-block-columns");
         var button = $(this).closest(".toggle-button");
         var selectedIndex = block.find(".toggle-buttons .toggle-button").index(button);
@@ -54,20 +116,6 @@
     });
 
 
-    $("#snowball-main").on("click", ".snowball-block-columns .toggle-button", function(event) {
-      var block = $(this).closest(".snowball-block-columns");
-      var selectedIndex = block.find(".toggle-buttons .toggle-button").index($(this));
-
-      activateSelectedButton(block, selectedIndex);
-
-      block.find(".CodeMirror").each(function(index, el) {
-        if(index === selectedIndex) {
-          $(el).show();
-        } else {
-          $(el).hide();
-        }
-      });
-    });
 
     function addNewTextArea(block, columnNumber) {
       var newHTML = "";
@@ -95,7 +143,7 @@
 
       editor.setSize("100%", "100%");
 
-      /*Trying to mark the <div> and </div> as readOnly*/
+      //Trying to mark the <div> and </div> as readOnly
       editor.markText({line:0,ch:0}, {line:0,ch:30}, {readOnly: true, atomic: true});
       editor.markText({line:1,ch:0}, {line:1,ch:7}, {readOnly: true, atomic: true});
 
@@ -110,10 +158,19 @@
     function activateSelectedButton(block, selection) {
       block.find(".toggle-buttons .toggle-button").each(function(index, el) {
         if(index === selection) {
-          $(el).addClass("active");
+          $(this).addClass("active");
         } else {
-          $(el).removeClass("active");
+          $(this).removeClass("active");
+        }
+      });
+
+      block.find(".CodeMirror").each(function(index) {
+        if(index === selection) {
+          $(this).show();
+        } else {
+          $(this).hide();
         }
       });
     }
+
 })(jQuery);
