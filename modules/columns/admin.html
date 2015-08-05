@@ -2,41 +2,33 @@
   <span class="fa fa-plus add-button"></span>
 
   <p>
-    <label><input type="checkbox" data-target="checkbox-col-1" value="checkbox-col-1" checked>checkbox-col-1</label>
-    <label><input type="checkbox" data-target="checkbox-col-2" value="checkbox-col-2">checkbox-col-2</label>
-    <label><input type="checkbox" data-target="checkbox-col-3" value="checkbox-col-3">checkbox-col-3</label>
-    <label><input type="checkbox" data-target="checkbox-col-4" value="checkbox-col-4">checkbox-col-4</label>
+    <label><input type="checkbox" data-target="checkbox-col-1" value="show-column" checked>checkbox-col-1</label>
+    <label><input type="checkbox" data-target="checkbox-col-2" value="show-column">checkbox-col-2</label>
+    <label><input type="checkbox" data-target="checkbox-col-3" value="show-column">checkbox-col-3</label>
+    <label><input type="checkbox" data-target="checkbox-col-4" value="show-column">checkbox-col-4</label>
   </p>
 
   <div class="toggle-buttons">
-    <div class="toggle-button toggle-column-1">Column 1<span class="fa fa-times"></span></div>
-    <div class="toggle-button toggle-column-2">Column 2<span class="fa fa-times"></span></div>
-    <div class="toggle-button toggle-column-3">Column 3<span class="fa fa-times"></span></div>
-    <div class="toggle-button toggle-column-4">Column 4<span class="fa fa-times"></span></div>
+    <div class="toggle-button toggle-column-1">Column 1<span class="fa fa-times delete-column"></span></div>
+    <div class="toggle-button toggle-column-2">Column 2<span class="fa fa-times delete-column"></span></div>
+    <div class="toggle-button toggle-column-3">Column 3<span class="fa fa-times delete-column"></span></div>
+    <div class="toggle-button toggle-column-4">Column 4<span class="fa fa-times delete-column"></span></div>
   </div>
 
   <div class="editors" style="height: 400px;">
-    <textarea class="column-textarea" data-target="col-1" style="height: 100%;">
-      <div class="column column-1">
-      </div>
-    </textarea>
+    <textarea class="column-textarea" data-target="col-1" style="height: 100%;"></textarea>
 
-    <textarea class="column-textarea" style="height: 100%;">
-      <div class="column column-2">
-      </div>
-    </textarea>
+    <textarea class="column-textarea" data-target="col-2" style="height: 100%;"></textarea>
 
-    <textarea class="column-textarea" style="height: 100%;">
-      <div class="column column-3">
-      </div>
-    </textarea>
+    <textarea class="column-textarea" data-target="col-3" style="height: 100%;"></textarea>
 
-    <textarea class="column-textarea" style="height: 100%;">
-      <div class="column column-4">
-      </div>
-    </textarea>
+    <textarea class="column-textarea" data-target="col-4" style="height: 100%;"></textarea>
   </div>
 <style>
+.snowball-block-columns p {
+  display: none;
+}
+
 .snowball-block-columns .column-textarea {
   margin-bottom: 2em;
 }
@@ -87,11 +79,11 @@
   transform: scale(1.2);
 }
 
-.activeButton {
+.snowball-block-columns .activeButton {
   display: inline !important;
 }
 
-.column-textarea {
+.snowball-block-columns .column-textarea {
   display: none;
 }
 </style>
