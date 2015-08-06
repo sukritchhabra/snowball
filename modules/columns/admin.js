@@ -62,6 +62,7 @@
         return false;
       }
     });
+    block.trigger("render")
   });
 
   function addNewColumn(block, selection) {
