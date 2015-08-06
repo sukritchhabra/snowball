@@ -35,7 +35,7 @@
       });
 
       textarea.data("codeMirrrorInstance", editor);
-
+  }
 
 
     $("#snowball-main").on("click", ".snowball-block-columns .toggle-button", function(event) {
@@ -85,7 +85,7 @@
 
     $("#snowball-main").on("click", ".snowball-block-columns .delete-column", function(event) {
       event.stopPropagation();
-      
+
       if (confirm("Are you sure you want to delete this column?")) {
         var block = $(this).closest(".snowball-block-columns");
         var button = $(this).closest(".toggle-button");
@@ -96,8 +96,6 @@
         if (selectedIndex == (activeEditors - 1)) {
           var textarea = block.find(".column-textarea").eq(selectedIndex);
           var codeMirrrorInstance = textarea.data("codeMirrrorInstance");
-
-          codeMirrrorInstance.toTextArea();
 
           var checkbox = block.find( '[type="checkbox"]' ).eq(selectedIndex);
           checkbox.prop("checked", false);
@@ -114,6 +112,8 @@
               $(this).removeClass("active");
             }
           });
+
+          block.find(".CodeMirror").eq((selectedIndex - 1)).show();
         } else {
           while (selectedIndex < (activeEditors - 1)){
             var textarea = block.find(".column-textarea").eq(selectedIndex);
@@ -169,7 +169,6 @@
       block.find(".CodeMirror").each(function(index) {
         if (index === selection) {
           $(this).show();
-          return
         } else {
          $(this).hide();
         }
