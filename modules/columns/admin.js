@@ -141,7 +141,7 @@
             block.find(".activeButton").eq((selectedIndex + 1)).removeClass("activeButton");
             activeEditors = block.find(".activeButton").length;
 
-            block.find(".column-textarea").eq((selectedIndex + 1)).val(undefined);
+            block.find(".column-textarea").eq((selectedIndex + 1)).val("");
           }
 
           selectedIndex = selectedIndex + 1;
@@ -170,7 +170,7 @@
       if (index === selection) {
         $(this).show();
       } else {
-       $(this).hide();
+        $(this).hide();
       }
     });
   }
